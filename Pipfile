@@ -11,11 +11,11 @@ flask = "*"
 multiprocessing = "*"
 numpy = "*"
 itertools = '*'
-scipy = '*'
+
 
 [dev-packages]
 
-
+scipy = '*'
 
 [requires]
 
