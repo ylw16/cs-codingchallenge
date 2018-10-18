@@ -1,6 +1,5 @@
 import numpy as np
 import itertools
-from scipy.special import comb
 
 def question01(portfolios):
     """computes the maximum evaluated value of a combined portfolio"""
@@ -8,7 +7,7 @@ def question01(portfolios):
     two_binports = list(itertools.combinations(bin_ports, 2))
     comb_port = 0
     best_comb = 0
-    for r in range(int(comb(len(portfolios),2))):
+    for r in range(len(two_binports)):
         comb_port = combined_portfolio(two_binports[r][0],two_binports[r][1])
         if comb_port > best_comb:
             best_comb = comb_port
