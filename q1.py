@@ -4,14 +4,14 @@ from scipy.special import comb
 
 def question01(portfolios):
     """computes the maximum evaluated value of a combined portfolio"""
-    binports = binary_portfolios(portfolios)
-    two_binports = list(itertools.combinations(binports, 2))
-    combport = 0
+    bin_ports = binary_portfolios(portfolios)
+    two_binports = list(itertools.combinations(bin_ports, 2))
+    comb_port = 0
     best_comb = 0
-    for n in range(int(comb(len(portfolios),2))):
-        combport = combined_portfolio(two_binports[n][0],two_binports[n][1])
-        if combport > best_comb:
-            best_comb = combport
+    for r in range(int(comb(len(portfolios),2))):
+        comb_port = combined_portfolio(two_binports[r][0],two_binports[r][1])
+        if comb_port > best_comb:
+            best_comb = comb_port
     return best_comb
     
 def binary_portfolios(ports):
