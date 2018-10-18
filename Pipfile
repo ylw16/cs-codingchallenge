@@ -13,10 +13,8 @@ numpy = "*"
 scipy = '*'
 
 
-
 [dev-packages]
 
-itertools = '*'
 
 [requires]
 
