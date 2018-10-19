@@ -15,7 +15,7 @@ def question02(cashFlowIn, cashFlowOut):
     for n in range(len(diff_type)):
         if diff_type[n] == 0:
             diff_num[n] = max(diff_num)
-    answer = min(diff_num)
+    answer = int(min(diff_num))
     return answer
 
 
@@ -31,6 +31,3 @@ def sum_subsets(subsets,type):
     for r in range(len(subsets)):
         sumsets.append([sum(subsets[r]),type])
     return sumsets
-
-
-
