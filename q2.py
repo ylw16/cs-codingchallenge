@@ -1,30 +1,19 @@
 import numpy as np
-import itertools
+import more_itertools
 
 def question02(cashFlowIn, cashFlowOut):
-    in_sumsets = sum_subsets(powerset(cashFlowIn),0)
-    out_sumsets = sum_subsets(powerset(cashFlowOut),1)
+    
+    in_sumsets = sum_subsets(list(more_itertools.powerset(cashFlowIn)),0)
+    out_sumsets = sum_subsets(list(more_itertools.powerset(cashFlowOut)),1)
     
     mixed_sumsets = np.array(sorted(in_sumsets+out_sumsets))
-    num_sumsets = [num_sumsets for [num_sumsets] in mixed_sumsets[:,[0]]]
-    type_sumsets = [type_sumsets for [type_sumsets] in mixed_sumsets[:,[1]]]
-    
-    diff_num = np.diff(num_sumsets) 
-    diff_type = np.diff(type_sumsets)
-    diff_num[0] = max(diff_num)
-    for n in range(len(diff_type)):
-        if diff_type[n] == 0:
-            diff_num[n] = max(diff_num)
-    answer = int(min(diff_num))
+    diff = np.diff(mixed_sumsets,axis=0)
+    diff[0,0] = 100
+    for n in range(len(diff)):
+        if diff[n,1] == 0:
+            diff[n,0] = 100
+    answer = int(min(diff[:,0]))
     return answer
-
-
-def powerset(iterable):
-    """computes all subsets of iterable"""
-    subsets = []
-    for r in range(len(iterable)+1):
-        subsets = subsets + list(itertools.combinations(iterable, r))
-    return subsets
 
 def sum_subsets(subsets,type):
     sumsets = []
