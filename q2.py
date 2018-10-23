@@ -9,7 +9,7 @@ def question02(cashFlowIn, cashFlowOut):
     mixed_sumsets = np.array(sorted(in_sumsets+out_sumsets))
     diff = np.diff(mixed_sumsets,axis=0)
     diff[0,0] = 100
-    for n in range(len(diff)):
+    for n in range(2,len(diff)):
         if diff[n,1] == 0:
             diff[n,0] = 100
     answer = int(min(diff[:,0]))
